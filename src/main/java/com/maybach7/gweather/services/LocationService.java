@@ -1,7 +1,6 @@
 package com.maybach7.gweather.services;
 
 import com.maybach7.gweather.dto.LocationDto;
-import com.maybach7.gweather.dto.responseDto.LocationResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

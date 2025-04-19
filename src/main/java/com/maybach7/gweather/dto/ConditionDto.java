@@ -10,5 +10,4 @@ import lombok.NoArgsConstructor;
 public class ConditionDto {
 
     private String text;
-    private String icon;
 }
