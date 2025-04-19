@@ -4,10 +4,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class CurrentDto {
 
     @JsonProperty("last_updated_epoch")
@@ -24,9 +26,6 @@ public class CurrentDto {
 
     @JsonProperty("wind_kph")
     private double wind_speed;
-
-    @JsonProperty("wind_dir")
-    private double wind_dir;
 
     @JsonProperty("pressure_mb")
     private int pressure;

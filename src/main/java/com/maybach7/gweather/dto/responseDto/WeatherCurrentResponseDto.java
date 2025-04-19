@@ -5,10 +5,12 @@ import com.maybach7.gweather.dto.LocationDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class WeatherCurrentResponseDto {
 
     private LocationDto location;
