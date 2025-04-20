@@ -1,6 +1,6 @@
 package com.maybach7.gweather.controllers;
 
-import com.maybach7.gweather.dto.LocationDto;
+import com.maybach7.gweather.dto.responseDto.LocationDto;
 import com.maybach7.gweather.dto.responseDto.WeatherCurrentResponseDto;
 import com.maybach7.gweather.services.LocationService;
 import com.maybach7.gweather.services.WeatherService;
@@ -30,12 +30,17 @@ public class WeatherPageController {
         return "current_weather";
     }
 
-    @GetMapping("/search")
-    public String search(@RequestParam("city") String city, Model model) {
-        List<LocationDto> locations = locationService.getLocations(city);
-        model.addAttribute("locations", locations);
-        return "locations";
-    }
+//    @GetMapping("/search")
+//    public String search() {
+//        return "search";
+//    }
+//
+//    @GetMapping("/search")
+//    public String search(@RequestParam("city") String city, Model model) {
+//        List<LocationDto> locations = locationService.getLocations(city);
+//        model.addAttribute("locations", locations);
+//        return "search";
+//
 
     @GetMapping("/current")
     public String current(@RequestParam("city") String city, Model model) {
