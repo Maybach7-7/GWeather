@@ -5,21 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
-<nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            Weather Tracker
-        </a>
-        <div class="d-flex align-items-center">
-            <span class="navbar-text me-3">zhukovsd</span>
-            <button class="btn btn-outline-danger">Sign out</button>
-        </div>
-    </div>
-</nav>
+<nav th:insert="fragments/navbar(${username})"></nav>
 
 <section id="page-content">
     <div class="container mt-4">
@@ -41,8 +31,8 @@
                         <div class="position-absolute weather-card-delete-form">
                             <button class="btn-close" aria-label="Delete"></button>
                         </div>
-                            <img class="card-img-top img-fluid"
-                             src="/weather-icons/original/animated/386.svg"
+                        <img class="card-img-top img-fluid"
+                             th:src="@{/img/113.svg}"
                              alt="Weather icon">
                         <div class="card-body d-flex flex-column">
                             <h1 class="card-text">21°C</h1>

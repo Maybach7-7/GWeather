@@ -1,0 +1,14 @@
+<nav th:fragment="navbar(username)" class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">
+            G'Weather
+        </a>
+        <div class="d-flex align-items-center">
+            <span class="navbar-text me-3"
+            th:if="username != null" th:text="${username}"></span>
+            <a th:if="${username != null}" class="btn btn-outline-danger" th:href="@{/logout}">Sign out</a>
+            <a th:if="${username == null}" class="btn btn-outline-primary" th:href="@{/login}">Sign in</a>
+
+        </div>
+    </div>
+</nav>

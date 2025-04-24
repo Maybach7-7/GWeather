@@ -8,35 +8,21 @@
 </head>
 <body>
 
-<nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="images/weather-app.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-            Weather Tracker
-        </a>
-        <div class="d-flex align-items-center">
-            <span class="navbar-text me-3">zhukovsd</span>
-            <button class="btn btn-outline-danger">Sign out</button>
-        </div>
-    </div>
-</nav>
+<nav th:insert="fragments/navbar(${username})"></nav>
 
 <section id="page-content">
     <div class="container mt-4">
         <div class="d-flex my-4">
             <form method="GET" action="/search/location" class="d-flex w-100">
                 <div class="input-group location-search-input-group me-3 w-100">
-                    <!-- Make input field grow to take up the available space -->
                     <input class="form-control flex-grow-1" type="text" name="name" placeholder="Enter location" value="San Francisco" required>
                     <button class="btn btn-outline-secondary btn-sm clear-input-button" type="button" onclick="this.previousElementSibling.value=''">
                         &times;
                     </button>
                 </div>
-                <!-- Add ms-auto to the button to align it to the right -->
                 <button type="submit" class="btn btn-outline-success ms-auto">Search</button>
             </form>
         </div>
-
         <div>
             <h2 class="pb-2">Locations:</h2>
             <div class="row">
@@ -46,9 +32,11 @@
                             <h4 class="card-title" th:text="${location.name}">City</h4>
                             <p class="card-text mb-1">Country: <span th:text="${location.country}"></span></p>
                             <p class="card-text mb-1">Latitude: <span th:text="${location.latitude}"></span></p>
-                            <p class="card-text mb-3">longitude: <span th:text="${location.longitude}"></span></p>
+                            <p class="card-text mb-3">Longitude: <span th:text="${location.longitude}"></span></p>
                             <div class="mt-auto">
-                                <button class="btn btn-primary w-100">Add</button>
+                                <form method="POST" th:action="@{/search/add(lat=${location.latitude}, lon=${location.longitude})}">
+                                    <button class="btn btn-primary w-100">Add</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -65,4 +53,5 @@
 </footer>
 
 </body>
+<!--хуй - Влад Журавлёв-->
 </html>
