@@ -39,4 +39,11 @@ public class SearchController {
         model.addAttribute("locations", locations);
         return "search";
     }
+
+//    @PostMapping("/add")
+//    public String addLocation(@RequestParam("lat") double latitude,
+//                              @RequestParam("long") double longitude,
+//                              Model model) {
+//
+//    }
 }
