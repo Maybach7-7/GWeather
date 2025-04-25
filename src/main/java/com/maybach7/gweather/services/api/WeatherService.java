@@ -1,4 +1,4 @@
-package com.maybach7.gweather.services;
+package com.maybach7.gweather.services.api;
 
 import com.maybach7.gweather.dto.responseDto.WeatherCurrentResponseDto;
 import com.maybach7.gweather.dto.responseDto.WeatherForecastResponseDto;
