@@ -1,13 +1,11 @@
 package com.maybach7.gweather.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "locations")
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 public class Location {
@@ -22,4 +20,12 @@ public class Location {
     @MapsId("userId")
     @JoinColumn(name = "user_id")
     private User user;
+
+    public Location(User user, String cityName, String counter, double lat, double lon) {
+        this.user = user;
+        this.cityName = cityName;
+        this.country = counter;
+        this.id = new LocationId();
+        this.id.setUserId(user.getId());
+    }
 }
