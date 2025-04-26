@@ -22,12 +22,11 @@ section#page-content {
 }
 
 .weather-logo {
-    background-image: url("images/weather-app.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 
-    min-height: 250px;
+    min-height: 150px;
 }
 
 .location-search-input-group .clear-input-button {
