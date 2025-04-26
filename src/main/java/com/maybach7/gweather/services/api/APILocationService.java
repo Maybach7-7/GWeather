@@ -10,7 +10,7 @@ import java.net.URLEncoder;
 import java.util.List;
 
 @Service
-public class LocationService {
+public class APILocationService {
 
     @Value("${weather.api.key}")
     private String apiKey;
@@ -18,7 +18,7 @@ public class LocationService {
     private RestTemplate rest;
 
     @Autowired
-    public LocationService(RestTemplate rest) {
+    public APILocationService(RestTemplate rest) {
         this.rest = rest;
     }
 

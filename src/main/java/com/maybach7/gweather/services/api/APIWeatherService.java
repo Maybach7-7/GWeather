@@ -10,16 +10,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class WeatherService {
+public class APIWeatherService {
 
     @Value("${weather.api.key}")
     private String apiKey;
 
     private final RestTemplate rest;
-    private final Logger logger = LoggerFactory.getLogger(WeatherService.class);
+    private final Logger logger = LoggerFactory.getLogger(APIWeatherService.class);
 
     @Autowired
-    public WeatherService(RestTemplate restTemplate) {
+    public APIWeatherService(RestTemplate restTemplate) {
         this.rest = restTemplate;
     }
 
