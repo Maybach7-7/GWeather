@@ -14,14 +14,17 @@
 <section id="page-content">
     <div class="container mt-4">
         <div class="d-flex my-4">
-            <div class="input-group location-search-input-group me-3">
-                <input class="form-control" type="text" name="name" placeholder="Enter location" required>
-                <button class="btn btn-outline-secondary btn-sm clear-input-button" type="button"
-                        onclick="this.previousElementSibling.value=''">
-                    &times;
-                </button>
-            </div>
-            <button class="btn btn-outline-success">Search</button>
+            <form method="GET" action="/search" class="d-flex w-100">
+                <div class="input-group location-search-input-group me-3 w-100">
+                    <input class="form-control flex-grow-1" type="text" name="name" placeholder="Enter location"
+                           value="San Francisco" required>
+                    <button class="btn btn-outline-secondary btn-sm clear-input-button" type="button"
+                            onclick="this.previousElementSibling.value=''">
+                        &times;
+                    </button>
+                </div>
+                <button type="submit" class="btn btn-outline-success ms-auto">Search</button>
+            </form>
         </div>
 
         <div>

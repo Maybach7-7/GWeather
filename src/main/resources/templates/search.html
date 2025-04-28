@@ -13,10 +13,12 @@
 <section id="page-content">
     <div class="container mt-4">
         <div class="d-flex my-4">
-            <form method="GET" action="/search/location" class="d-flex w-100">
+            <form method="GET" action="/search" class="d-flex w-100">
                 <div class="input-group location-search-input-group me-3 w-100">
-                    <input class="form-control flex-grow-1" type="text" name="name" placeholder="Enter location" value="San Francisco" required>
-                    <button class="btn btn-outline-secondary btn-sm clear-input-button" type="button" onclick="this.previousElementSibling.value=''">
+                    <input class="form-control flex-grow-1" type="text" name="name" placeholder="Enter location"
+                           value="San Francisco" required>
+                    <button class="btn btn-outline-secondary btn-sm clear-input-button" type="button"
+                            onclick="this.previousElementSibling.value=''">
                         &times;
                     </button>
                 </div>
@@ -24,9 +26,12 @@
             </form>
         </div>
         <div>
-            <h2 class="pb-2">Locations:</h2>
+            <h2 class="pb-2" th:if="${param.name != null}">Locations:</h2>
+            <h2 class="pb-2" th:if="${param.name == null}">Search for any location. For example: Krasnodar</h2>
+
+            <h2 class="pb-2" th:if="${locationList!=null && #lists.isEmpty(locationList)}">No locations were found</h2>
             <div class="row">
-                <div class="col-12 col-lg-3 col-md-6 mb-4" th:each="location : ${locations}">
+                <div class="col-12 col-lg-3 col-md-6 mb-4" th:each="location : ${locationList}">
                     <div class="card h-100">
                         <div class="card-body d-flex flex-column">
                             <h4 class="card-title" th:text="${location.name}">City</h4>
@@ -34,7 +39,8 @@
                             <p class="card-text mb-1">Latitude: <span th:text="${location.latitude}"></span></p>
                             <p class="card-text mb-3">Longitude: <span th:text="${location.longitude}"></span></p>
                             <div class="mt-auto">
-                                <form method="POST" th:action="@{/search/add(lat=${location.latitude}, lon=${location.longitude})}">
+                                <form method="POST"
+                                      th:action="@{/search/add(lat=${location.latitude}, lon=${location.longitude})}">
                                     <button class="btn btn-primary w-100">Add</button>
                                 </form>
                             </div>

@@ -12,8 +12,7 @@ import java.security.Principal;
 public class HomeController {
 
     @GetMapping
-    public String homePage(Model model) {
-        model.addAttribute("username", null);
+    public String homePage() {
         return "home";
     }
 }
