@@ -24,6 +24,10 @@
                         <input type="password" class="form-control" id="password" name="password" required value=""/>
                     </div>
 
+                    <div th:if="${param.error}" style="color:red;">
+                        Неверные имя пользователя или пароль
+                    </div>
+
                     <input type="hidden" name="redirect_to" value="http://localhost/"/>
 
                     <button type="submit" class="btn btn-primary w-100 mt-3">Sign In</button>
