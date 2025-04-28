@@ -12,12 +12,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.logging.Logger;
+
 @Controller
 @RequestMapping("/sign-up")
 @RequiredArgsConstructor
 public class SignUpController {
 
     private final UserService userService;
+    private final Logger logger = Logger.getLogger(SignUpController.class.getName());
 
     @GetMapping
     public String signUpPage(Model model) {
@@ -29,13 +32,15 @@ public class SignUpController {
     public String signUpSubmit(@Valid @ModelAttribute User user,
                                BindingResult bindingResult,
                                Model model) {
-        if (bindingResult.hasErrors()) {
-            return "sign-up";
-        }
+        logger.info(user.toString());
         if(!user.getPassword().equals(user.getRepeatedPassword())) {
             bindingResult.rejectValue("repeatedPassword", null, "Пароли не совпадают");
         }
-        userService.registerUser(user);
+        if (bindingResult.hasErrors()) {
+            return "sign-up";
+        }
+        var new_user = userService.registerUser(user);
+        logger.info(new_user.toString());
         return "redirect:/login";
     }
 }
