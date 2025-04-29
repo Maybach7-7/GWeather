@@ -13,19 +13,22 @@ public class Location {
     @EmbeddedId
     private LocationId id;
 
-    private String cityName;
-    private String country;
-
     @ManyToOne
     @MapsId("userId")
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Location(User user, String cityName, String counter, double lat, double lon) {
+    public Location(User user, double lat, double lon) {
         this.user = user;
-        this.cityName = cityName;
-        this.country = counter;
         this.id = new LocationId();
         this.id.setUserId(user.getId());
+    }
+
+    public void setLocationId(LocationId locationId) {
+        this.id = locationId;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
