@@ -30,6 +30,14 @@ public class APIWeatherService {
         return result;
     }
 
+    public WeatherCurrentResponseDto getCurrentWeather(double latitude,
+                                                       double longitude) {
+        String url = String.format("https://api.weatherapi.com/v1/current.json?q=%f,%f&lang=%s&key=%s", latitude, longitude, "en", apiKey);
+        var result = rest.getForObject(url, WeatherCurrentResponseDto.class);
+        logger.info(result.toString());
+        return result;
+    }
+
     public WeatherForecastResponseDto getWeatherForecast(String city) {
         String url = String.format("https://api.weatherapi.com/v1/forecast.json?q=%s&days=%d&lang=%s&key=%s", city, 3, "en", apiKey);
         return rest.getForObject(url, WeatherForecastResponseDto.class);
