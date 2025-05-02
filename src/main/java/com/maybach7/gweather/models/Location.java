@@ -3,11 +3,13 @@ package com.maybach7.gweather.models;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "locations")
 @NoArgsConstructor
 @Getter
+@ToString(exclude = "user")
 public class Location {
 
     @EmbeddedId

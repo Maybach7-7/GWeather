@@ -1,10 +1,7 @@
 package com.maybach7.gweather.dto.responseDto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @AllArgsConstructor
@@ -35,4 +32,10 @@ public class LocationDto {
 
     @JsonProperty("localtime")
     private String localtime;
+
+    private boolean isTracked = false;
+
+    public void setTracked(boolean tracked) {
+        isTracked = tracked;
+    }
 }

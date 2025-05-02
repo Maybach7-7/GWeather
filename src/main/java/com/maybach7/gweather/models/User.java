@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "users")
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "locations")
 public class User {
 
     @Id

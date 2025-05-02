@@ -3,6 +3,7 @@ package com.maybach7.gweather.models;
 import jakarta.persistence.Embeddable;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -10,6 +11,7 @@ import java.util.Objects;
 @Embeddable
 @Getter
 @Setter
+@ToString
 public class LocationId implements Serializable {
 
     private Long userId;
