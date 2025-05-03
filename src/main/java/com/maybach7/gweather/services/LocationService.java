@@ -27,8 +27,8 @@ public class LocationService {
     }
 
     public void addLocation(CustomUserDetails userDetails,
-                            double latitude,
-                            double longitude) {
+                            String latitude,
+                            String longitude) {
 
         LocationId locationId = new LocationId(userDetails.getId(), latitude, longitude);
         Location location = new Location();
@@ -40,8 +40,8 @@ public class LocationService {
 
     @Transactional
     public void removeLocation(CustomUserDetails userDetails,
-                               double lat,
-                               double lon) {
+                               String lat,
+                               String lon) {
         LocationId locationId = new LocationId(userDetails.getId(), lat, lon);
         locationRepository.deleteById(locationId);
     }

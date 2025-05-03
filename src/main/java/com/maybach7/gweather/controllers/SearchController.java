@@ -48,8 +48,8 @@ public class SearchController {
 
     @PostMapping("/add")
     @ResponseBody
-    public ResponseEntity<String> addLocation(@RequestParam("lat") double latitude,
-                              @RequestParam("long") double longitude) {
+    public ResponseEntity<String> addLocation(@RequestParam("lat") String latitude,
+                              @RequestParam("long") String longitude) {
         logger.info("Received latitude: " + latitude + ", longitude: " + longitude);
         CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -60,8 +60,8 @@ public class SearchController {
 
     @PostMapping("/remove")
     @ResponseBody
-    public ResponseEntity<String> removeLocation(@RequestParam("lat") double latitude,
-                                              @RequestParam("long") double longitude) {
+    public ResponseEntity<String> removeLocation(@RequestParam("lat") String latitude,
+                                              @RequestParam("long") String longitude) {
         logger.info("Received latitude: " + latitude + ", longitude: " + longitude);
         CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 

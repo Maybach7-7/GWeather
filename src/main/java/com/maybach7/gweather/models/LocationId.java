@@ -1,6 +1,7 @@
 package com.maybach7.gweather.models;
 
 import jakarta.persistence.Embeddable;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -12,29 +13,18 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 public class LocationId implements Serializable {
 
     private Long userId;
-    private double latitude;
-    private double longitude;
+    private String latitude;
+    private String longitude;
 
     public LocationId() {}
 
-    public LocationId(Long userId, double latitude, double longitude) {
+    public LocationId(Long userId, String latitude, String longitude) {
         this.userId = userId;
         this.latitude = latitude;
         this.longitude = longitude;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        LocationId that = (LocationId) o;
-        return Double.compare(latitude, that.latitude) == 0 && Double.compare(longitude, that.longitude) == 0 && Objects.equals(userId, that.userId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(userId, latitude, longitude);
     }
 }

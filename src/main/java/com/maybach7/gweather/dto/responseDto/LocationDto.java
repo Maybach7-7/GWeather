@@ -19,10 +19,10 @@ public class LocationDto {
     private String country;
 
     @JsonProperty("lat")
-    private double latitude;
+    private String latitude;
 
     @JsonProperty("lon")
-    private double longitude;
+    private String longitude;
 
     @JsonProperty("tz_id")
     private String timezone;

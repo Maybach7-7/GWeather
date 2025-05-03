@@ -3,6 +3,7 @@ package com.maybach7.gweather.models;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @Entity
@@ -10,6 +11,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @ToString(exclude = "user")
+@Setter
 public class Location {
 
     @EmbeddedId
@@ -22,9 +24,5 @@ public class Location {
 
     public void setLocationId(LocationId locationId) {
         this.id = locationId;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

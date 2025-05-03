@@ -24,22 +24,22 @@ public class APIWeatherService {
     }
 
     public WeatherCurrentResponseDto getCurrentWeather(String city) {
-        String url = String.format("https://api.weatherapi.com/v1/current.json?q=%s&lang=%s&key=%s", city, "en", apiKey);
+        String url = String.format("https://api.weatherapi.com/v1/current.json?q=%s&key=%s&lang=%s", city, apiKey, "en");
         var result = rest.getForObject(url, WeatherCurrentResponseDto.class);
         logger.info(result.toString());
         return result;
     }
 
-    public WeatherCurrentResponseDto getCurrentWeather(double latitude,
-                                                       double longitude) {
-        String url = String.format("https://api.weatherapi.com/v1/current.json?q=%f,%f&lang=%s&key=%s", latitude, longitude, "en", apiKey);
+    public WeatherCurrentResponseDto getCurrentWeather(String latitude,
+                                                       String longitude) {
+        String url = String.format("https://api.weatherapi.com/v1/current.json?q=%s,%s&key=%s&lang=%s", latitude, longitude, apiKey, "en");
         var result = rest.getForObject(url, WeatherCurrentResponseDto.class);
         logger.info(result.toString());
         return result;
     }
 
     public WeatherForecastResponseDto getWeatherForecast(String city) {
-        String url = String.format("https://api.weatherapi.com/v1/forecast.json?q=%s&days=%d&lang=%s&key=%s", city, 3, "en", apiKey);
+        String url = String.format("https://api.weatherapi.com/v1/forecast.json?q=%s&days=%d&key=%s&lang=%s", city, 3, apiKey, "en");
         return rest.getForObject(url, WeatherForecastResponseDto.class);
     }
 }
