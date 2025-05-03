@@ -46,6 +46,13 @@ public class LocationService {
         locationRepository.deleteById(locationId);
     }
 
+    @Transactional
+    public void removeByApproximateLocation(CustomUserDetails userDetails,
+                                            String lat,
+                                            String lon) {
+        locationRepository.deleteByApproximateLocationId(userDetails.getId(), lat, lon);
+    }
+
     public void markAsTracked(List<LocationDto> locationList, List<Location> userLocationList) {
         for (var userLocation : userLocationList) {
             for (var dtoLocation : locationList) {

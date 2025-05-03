@@ -35,9 +35,9 @@
             <div class="row">
                 <div class="col-12 col-sm-6 col-lg-4 col-md-6 mb-4" th:each="currentWeather : ${currentWeatherList}">
                     <div class="card h-100 d-flex flex-column position-relative weather-card">
-                        <div class="position-absolute weather-card-delete-form">
-                            <button class="btn-close" aria-label="Delete"></button>
-                        </div>
+                        <form method="POST" th:action="@{/remove(lat=${currentWeather.location.latitude}, long=${currentWeather.location.longitude})}" class="position-absolute weather-card-delete-form">
+                            <button class="btn-close" type="submit" aria-label="Delete"></button>
+                        </form>
                         <img class="card-img-top img-fluid"
                              th:src="@{${currentWeather.current.condition.icon}}"
                              th:alt="${currentWeather.current.condition.text}">

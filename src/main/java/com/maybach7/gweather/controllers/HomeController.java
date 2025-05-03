@@ -9,7 +9,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 import java.security.Timestamp;
@@ -35,8 +37,18 @@ public class HomeController {
             var endTime = System.currentTimeMillis();
             long duration = endTime - startTime;
             System.out.println("Time taken to fetch current weather: " + duration + " ms");
+
             model.addAttribute("currentWeatherList", currentWeatherList);
         }
         return "home";
+    }
+
+    @PostMapping("/remove")
+    public String removeLocation(@RequestParam("lat") String latitude,
+                                 @RequestParam("long") String longitude) {
+        CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        locationService.removeByApproximateLocation(userDetails, latitude, longitude);
+
+        return "redirect:/";
     }
 }
