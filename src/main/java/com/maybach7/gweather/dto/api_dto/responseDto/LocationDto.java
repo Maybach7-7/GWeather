@@ -1,4 +1,4 @@
-package com.maybach7.gweather.dto.responseDto;
+package com.maybach7.gweather.dto.api_dto.responseDto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;

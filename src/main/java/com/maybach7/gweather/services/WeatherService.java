@@ -1,6 +1,6 @@
 package com.maybach7.gweather.services;
 
-import com.maybach7.gweather.dto.responseDto.WeatherCurrentResponseDto;
+import com.maybach7.gweather.dto.api_dto.responseDto.WeatherCurrentResponseDto;
 import com.maybach7.gweather.models.Location;
 import com.maybach7.gweather.services.api.APIWeatherService;
 import lombok.RequiredArgsConstructor;

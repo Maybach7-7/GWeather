@@ -1,8 +1,8 @@
 package com.maybach7.gweather.controllers;
 
-import com.maybach7.gweather.dto.responseDto.WeatherCurrentResponseDto;
+import com.maybach7.gweather.dto.api_dto.responseDto.WeatherCurrentResponseDto;
 import com.maybach7.gweather.services.LocationService;
-import com.maybach7.gweather.services.WeatherService;
+import com.maybach7.gweather.services.api.APIWeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class WeatherPageController {
 
     private final LocationService locationService;
-    private final WeatherService weatherService;
+    private final APIWeatherService weatherService;
 
     @Autowired
     public WeatherPageController(LocationService locationService,
-                                 WeatherService weatherService) {
+                                 APIWeatherService weatherService) {
         this.locationService = locationService;
         this.weatherService = weatherService;
     }

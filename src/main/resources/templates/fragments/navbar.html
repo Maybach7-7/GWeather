@@ -1,4 +1,4 @@
-<nav th:fragment="navbar(username)" class="navbar navbar-light bg-light" xmlns:sec="http://www.w3.org/1999/xhtml">
+<nav th:fragment="navbar" class="navbar navbar-light bg-light" xmlns:sec="http://www.w3.org/1999/xhtml">
     <div class="container-fluid">
         <a class="navbar-brand" th:href="@{/}">
             G'Weather
@@ -8,10 +8,9 @@
                 <a class="btn btn-outline-primary" th:href="@{/login}">Sign in</a>
             </div>
             <div sec:authorize="isAuthenticated()">
-                <span class="navbar-text me-3" sec:authentication="name"></span>
+                <a href="/profile"><span class="navbar-text me-3" sec:authentication="name"></span></a>
                 <a class="btn btn-outline-danger" th:href="@{/logout}">Log out</a>
             </div>
-
         </div>
     </div>
 </nav>

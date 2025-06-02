@@ -1,7 +1,7 @@
 package com.maybach7.gweather.services.api;
 
-import com.maybach7.gweather.dto.responseDto.WeatherCurrentResponseDto;
-import com.maybach7.gweather.dto.responseDto.WeatherForecastResponseDto;
+import com.maybach7.gweather.dto.api_dto.responseDto.WeatherCurrentResponseDto;
+import com.maybach7.gweather.dto.api_dto.responseDto.WeatherForecastResponseDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

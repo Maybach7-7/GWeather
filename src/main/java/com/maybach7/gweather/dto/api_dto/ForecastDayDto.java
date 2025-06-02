@@ -1,4 +1,4 @@
-package com.maybach7.gweather.dto;
+package com.maybach7.gweather.dto.api_dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

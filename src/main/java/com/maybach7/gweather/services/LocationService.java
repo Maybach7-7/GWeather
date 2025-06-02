@@ -1,6 +1,6 @@
 package com.maybach7.gweather.services;
 
-import com.maybach7.gweather.dto.responseDto.LocationDto;
+import com.maybach7.gweather.dto.api_dto.responseDto.LocationDto;
 import com.maybach7.gweather.models.Location;
 import com.maybach7.gweather.models.LocationId;
 import com.maybach7.gweather.models.User;
@@ -56,8 +56,8 @@ public class LocationService {
     public void markAsTracked(List<LocationDto> locationList, List<Location> userLocationList) {
         for (var userLocation : userLocationList) {
             for (var dtoLocation : locationList) {
-                if (userLocation.getId().getLatitude() == dtoLocation.getLatitude() &&
-                    userLocation.getId().getLongitude() == dtoLocation.getLongitude()) {
+                if (userLocation.getId().getLatitude().equals(dtoLocation.getLatitude()) &&
+                    userLocation.getId().getLongitude().equals(dtoLocation.getLongitude())) {
                     dtoLocation.setTracked(true);
                 }
             }

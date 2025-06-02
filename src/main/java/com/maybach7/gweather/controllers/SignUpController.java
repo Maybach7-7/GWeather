@@ -30,10 +30,9 @@ public class SignUpController {
 
     @PostMapping
     public String signUpSubmit(@Valid @ModelAttribute User user,
-                               BindingResult bindingResult,
-                               Model model) {
+                               BindingResult bindingResult) {
         logger.info(user.toString());
-        if(!user.getPassword().equals(user.getRepeatedPassword())) {
+        if (!user.getPassword().equals(user.getRepeatedPassword())) {
             bindingResult.rejectValue("repeatedPassword", null, "Пароли не совпадают");
         }
         if (bindingResult.hasErrors()) {

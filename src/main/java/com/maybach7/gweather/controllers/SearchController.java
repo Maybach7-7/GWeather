@@ -1,6 +1,6 @@
 package com.maybach7.gweather.controllers;
 
-import com.maybach7.gweather.dto.responseDto.LocationDto;
+import com.maybach7.gweather.dto.api_dto.responseDto.LocationDto;
 import com.maybach7.gweather.models.Location;
 import com.maybach7.gweather.security.CustomUserDetails;
 import com.maybach7.gweather.services.LocationService;
@@ -36,7 +36,8 @@ public class SearchController {
             CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             List<Location> userLocationList = locationService.getUserLocations(userDetails.toUser());
 
-            logger.info("Found " + locationList.size() + " locations");
+            logger.info("Found " + locationList.size() + " locations from API");
+            logger.info("Found " + userLocationList.size() + " locations from DB");
             logger.info(locationList.toString());
             logger.info(userLocationList.toString());
 

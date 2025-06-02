@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Noto+Sans&display=swap&subset=cyrillic"
           rel="stylesheet">
@@ -12,9 +12,11 @@
 </head>
 <body>
 
-<nav th:insert="fragments/navbar(${username})"></nav>
+<nav th:insert="fragments/navbar"></nav>
 
 <section id="page-content">
+
+
     <div class="container mt-4">
         <div class="d-flex my-4">
             <form method="GET" action="/search" class="d-flex w-100">
@@ -31,11 +33,19 @@
             </form>
         </div>
 
+        <div th:if="${#lists.isEmpty(currentWeatherList)}"
+             class="d-flex justify-content-center align-items-center mt-5">
+            <h2 class="text-center">Welcome to our site!<br/>
+                You can add any locations to track the weather.</h2>
+        </div>
+
         <div>
             <div class="row">
                 <div class="col-12 col-sm-6 col-lg-4 col-md-6 mb-4" th:each="currentWeather : ${currentWeatherList}">
                     <div class="card h-100 d-flex flex-column position-relative weather-card">
-                        <form method="POST" th:action="@{/remove(lat=${currentWeather.location.latitude}, long=${currentWeather.location.longitude})}" class="position-absolute weather-card-delete-form">
+                        <form method="POST"
+                              th:action="@{/remove(lat=${currentWeather.location.latitude}, long=${currentWeather.location.longitude})}"
+                              class="position-absolute weather-card-delete-form">
                             <button class="btn-close" type="submit" aria-label="Delete"></button>
                         </form>
                         <img class="card-img-top img-fluid"
@@ -64,8 +74,8 @@
                                     </p>
                                 </div>
                             </div>
-<!--                            <button class="btn btn-outline-secondary details-button mt-auto">Details</button>-->
-<!--                            На будущее)) -->
+                            <!--                            <button class="btn btn-outline-secondary details-button mt-auto">Details</button>-->
+                            <!--TODO:                            На будущее)) -->
                         </div>
                     </div>
                 </div>

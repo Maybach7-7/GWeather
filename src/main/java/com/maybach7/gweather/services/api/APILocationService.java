@@ -1,8 +1,7 @@
 package com.maybach7.gweather.services.api;
 
-import com.maybach7.gweather.dto.responseDto.LocationDto;
+import com.maybach7.gweather.dto.api_dto.responseDto.LocationDto;
 import lombok.extern.slf4j.Slf4j;
-import lombok.extern.slf4j.XSlf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
