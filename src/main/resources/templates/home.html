@@ -56,7 +56,7 @@
                             <h3 class="card-title"
                                 th:text="${currentWeather.location.name + ', ' + currentWeather.location.country}"></h3>
 
-                            <div class="d-flex flex-row mt-auto">
+                            <div class="d-flex flex-row">
                                 <div class="d-flex flex-column">
                                     <p class="card-text mb-1">Condition: <span
                                             th:text="${currentWeather.current.condition.text}"></span></p>
@@ -74,8 +74,13 @@
                                     </p>
                                 </div>
                             </div>
-                            <!--                            <button class="btn btn-outline-secondary details-button mt-auto">Details</button>-->
-                            <!--TODO:                            На будущее)) -->
+
+                            <div class="alert alert-info text-center fs-5 py-1 px-2 my-3 advice-box"
+                                 th:if="${currentWeather.adviceMessage != null}"
+                                 th:text="${currentWeather.adviceMessage}">
+                            </div>
+
+                            <button class="btn btn-outline-secondary details-button mt-auto">Details</button>
                         </div>
                     </div>
                 </div>

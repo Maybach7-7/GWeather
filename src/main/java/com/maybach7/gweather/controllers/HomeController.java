@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
-import java.security.Timestamp;
 import java.util.List;
 
 @Controller
@@ -34,6 +33,7 @@ public class HomeController {
 
             var startTime = System.currentTimeMillis();
             var currentWeatherList = weatherService.getCurrentWeatherForLocations(userLocationList);
+            currentWeatherList = weatherService.getCurrentAdviceMessages(currentWeatherList);
             var endTime = System.currentTimeMillis();
             long duration = endTime - startTime;
             System.out.println("Time taken to fetch current weather: " + duration + " ms");
