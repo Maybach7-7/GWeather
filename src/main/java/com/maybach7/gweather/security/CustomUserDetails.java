@@ -35,7 +35,6 @@ public class CustomUserDetails implements UserDetails {
         return id;
     }
 
-
     public User toUser() {
         User user = new User();
         user.setId(id);

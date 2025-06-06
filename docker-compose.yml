@@ -1,0 +1,31 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    networks:
+      - main
+    restart: unless-stopped
+
+  db:
+    image: postgres:17
+    container_name: postgres
+    env_file: "db.env"
+    ports: 
+      - 5432:5432
+    volumes:
+      - ./sql/data:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - main
+    restart: unless-stopped
+
+networks:
+  main:
+    name: main
+    driver: bridge
