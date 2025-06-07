@@ -10,22 +10,22 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class DayDto {
+public class HourDto {
 
-    @JsonProperty("maxtemp_c")
-    private double maxtemp;
+    @JsonProperty("temp_epoch")
+    private long time_epoch;
 
-    @JsonProperty("mintemp_c")
-    private double mintemp;
+    @JsonProperty("time")
+    private String time;
 
-    @JsonProperty("avgtemp_c")
-    private double avgtemp;
-
-    @JsonProperty("avghumidity")
-    private int avghumidity;
+    @JsonProperty("temp_c")
+    private double temp;
 
     @JsonProperty("condition")
     private ConditionDto condition;
+
+    @JsonProperty("humidity")
+    private int humidity;
 
     @JsonProperty("uv")
     private double uv;

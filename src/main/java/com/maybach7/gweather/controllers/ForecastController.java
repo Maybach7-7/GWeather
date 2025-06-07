@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/test")
-public class WeatherPageController {
+@RequestMapping("/forecast")
+public class ForecastController {
 
     private final LocationService locationService;
     private final APIWeatherService weatherService;
 
     @Autowired
-    public WeatherPageController(LocationService locationService,
+    public ForecastController(LocationService locationService,
                                  APIWeatherService weatherService) {
         this.locationService = locationService;
         this.weatherService = weatherService;
