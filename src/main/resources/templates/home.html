@@ -80,7 +80,9 @@
                                  th:text="${currentWeather.adviceMessage}">
                             </div>
 
-                            <button class="btn btn-outline-secondary details-button mt-auto">Details</button>
+                            <button class="btn btn-outline-secondary details-button mt-auto">
+                                <a th:href="@{/forecast(lat=${currentWeather.location.latitude}, long=${currentWeather.location.longitude})}">Details</a>
+                            </button>
                         </div>
                     </div>
                 </div>
