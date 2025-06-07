@@ -38,8 +38,11 @@ public class APIWeatherService {
         return result;
     }
 
-    public WeatherForecastResponseDto getWeatherForecast(String city) {
-        String url = String.format("https://api.weatherapi.com/v1/forecast.json?q=%s&days=%d&key=%s&lang=%s", city, 3, apiKey, "en");
-        return rest.getForObject(url, WeatherForecastResponseDto.class);
+    public WeatherForecastResponseDto getWeatherForecast(String latitude,
+                                                         String longitude) {
+        String url = String.format("https://api.weatherapi.com/v1/forecast.json?q=%s,%s&days=%d&key=%s&lang=%s", latitude, longitude, 3, apiKey, "en");
+        var obj = rest.getForObject(url, WeatherForecastResponseDto.class);
+        System.out.println("\n" + obj.toString() + "\n");
+        return obj;
     }
 }

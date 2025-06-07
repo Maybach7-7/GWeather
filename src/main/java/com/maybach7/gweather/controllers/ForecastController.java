@@ -1,7 +1,7 @@
 package com.maybach7.gweather.controllers;
 
-import com.maybach7.gweather.dto.api_dto.responseDto.WeatherCurrentResponseDto;
-import com.maybach7.gweather.services.LocationService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maybach7.gweather.services.api.APIWeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,38 +14,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/forecast")
 public class ForecastController {
 
-    private final LocationService locationService;
     private final APIWeatherService weatherService;
 
     @Autowired
-    public ForecastController(LocationService locationService,
-                                 APIWeatherService weatherService) {
-        this.locationService = locationService;
+    public ForecastController(APIWeatherService weatherService) {
         this.weatherService = weatherService;
     }
 
-    @GetMapping("/")
-    public String index() {
-        return "current_weather";
-    }
+    @GetMapping
+    public String index(@RequestParam("lat") String latitude,
+                        @RequestParam("long") String longitude,
+                        Model model) throws JsonProcessingException {
+        // делаем необходимый запрос к API
+        System.out.println("Делаем запрос прогноза погоды для " + latitude + " " + longitude);
+        var apiResult = weatherService.getWeatherForecast(latitude, longitude);
 
-//    @GetMapping("/search")
-//    public String search() {
-//        return "search";
-//    }
-//
-//    @GetMapping("/search")
-//    public String search(@RequestParam("city") String city, Model model) {
-//        List<LocationDto> locations = locationService.getLocations(city);
-//        model.addAttribute("locations", locations);
-//        return "search";
-//
+        model.addAttribute("locationName", apiResult.getLocation().getName());
+        model.addAttribute("forecastDayDto", apiResult.getForecast().getForecastday());
 
-    @GetMapping("/current")
-    public String current(@RequestParam("city") String city, Model model) {
-        WeatherCurrentResponseDto currentWeather =
-                weatherService.getCurrentWeather(city);
-        model.addAttribute("currentWeather", currentWeather);
-        return "current_weather";
+        model.addAttribute("forecastJson", apiResult.getForecast());
+
+        return "forecast";
     }
 }
