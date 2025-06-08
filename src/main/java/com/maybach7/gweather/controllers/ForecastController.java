@@ -1,7 +1,7 @@
 package com.maybach7.gweather.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.maybach7.gweather.services.WeatherService;
 import com.maybach7.gweather.services.api.APIWeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/forecast")
 public class ForecastController {
 
-    private final APIWeatherService weatherService;
+    private final APIWeatherService apiWeatherService;
+    private final WeatherService weatherService;
 
     @Autowired
-    public ForecastController(APIWeatherService weatherService) {
+    public ForecastController(APIWeatherService apiWeatherService,
+                              WeatherService weatherService) {
+        this.apiWeatherService = apiWeatherService;
         this.weatherService = weatherService;
     }
 
@@ -27,7 +30,8 @@ public class ForecastController {
                         Model model) throws JsonProcessingException {
         // делаем необходимый запрос к API
         System.out.println("Делаем запрос прогноза погоды для " + latitude + " " + longitude);
-        var apiResult = weatherService.getWeatherForecast(latitude, longitude);
+        var apiResult = apiWeatherService.getWeatherForecast(latitude, longitude);
+        apiResult = weatherService.adjustHoursOfForecast(apiResult, 2, 3);
 
         model.addAttribute("locationName", apiResult.getLocation().getName());
         model.addAttribute("forecastDayDto", apiResult.getForecast().getForecastday());

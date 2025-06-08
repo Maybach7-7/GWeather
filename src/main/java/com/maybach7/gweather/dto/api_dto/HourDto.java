@@ -29,4 +29,13 @@ public class HourDto {
 
     @JsonProperty("uv")
     private double uv;
+
+    public HourDto(HourDto dto) {
+        this.time_epoch = dto.getTime_epoch();
+        this.time = dto.getTime();
+        this.temp = dto.getTemp();
+        this.condition = dto.getCondition();
+        this.humidity = dto.getHumidity();
+        this.uv = dto.getUv();
+    }
 }
